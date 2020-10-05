@@ -9,7 +9,8 @@ import fastai
 from fastai.vision import load_learner, Image, get_transforms
 from io import BytesIO
 import warnings
-
+import argparse
+parser = argparse.ArgumentParser(description='Process path')
 warnings.simplefilter("ignore")
 
 path_model = r'models/'
@@ -40,6 +41,7 @@ class ClassPredictor:
 
 
 model = ClassPredictor()
+
 
 image_path = input()
 
