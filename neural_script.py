@@ -1,5 +1,4 @@
 from PIL import Image as PIL_Image
-from config import path_model
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -8,6 +7,12 @@ import torchvision.transforms as transforms
 import torchvision.models as models
 import fastai
 from fastai.vision import load_learner, Image, get_transforms
+from io import BytesIO
+import warnings
+
+warnings.simplefilter("ignore")
+
+path_model = r'models/'
 
 
 class ClassPredictor:
@@ -37,6 +42,6 @@ class ClassPredictor:
 model = ClassPredictor()
 
 image_path = input()
-with open(image_path) as image:
-    class_ = model.predict(image)
-    print(class_)
+
+class_ = model.predict(image_path)
+print(class_)
