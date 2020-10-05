@@ -11,6 +11,9 @@ from io import BytesIO
 import warnings
 import argparse
 parser = argparse.ArgumentParser(description='Process path')
+parser.add_argument('--path', metavar='N', type=str, nargs='+',
+                    help='parse path')
+args = parser.parse_args()
 warnings.simplefilter("ignore")
 
 path_model = r'models/'
@@ -43,7 +46,7 @@ class ClassPredictor:
 model = ClassPredictor()
 
 
-image_path = input()
+image_path = args.path[0]
 
 class_ = model.predict(image_path)
 print(class_)
